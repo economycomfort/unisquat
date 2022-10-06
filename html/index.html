@@ -2,7 +2,7 @@
   <head><title>Typosquatting with unicode</title></head>
   <body>
     <h1>You got phished.</h1>
-    <br />
+   
     <h2>Why?</h2>
     The hyperlink you clicked on contained a unicode character.  Several unicode characters can look very similar, if not identical, to their ASCII cousins.<br />  
     For instance, 'w' vs. 'ᴡ'.  Can you tell the difference?  Maybe with the right font (such as the default font on this web page.)<br />  
@@ -13,10 +13,28 @@
     Unisquatted: https://ᴡalmart.com/shop/deals<br />
     <br />
     That's pretty tough.<br />
+   
+    <h2>How?</h2>
+    Domain names can be registered with Unicode characters in them, such as Cyrillic or even your favorite emojis.<br />
+    In order to translate those characters into ASCII, a domain name is generated using <a href="https://en.wikipedia.org/wiki/Punycode">Punycode</a>, which is a method of representing Unicode characters within an ASCII domain name.<br />
+    What you're actually registering, in this case, is an ASCII domain name that represents a Unicode character.  In the case of my domain, ᴡalmart.com, it's actually represented in Punycode as xn--almart-245b.com.<br />
+    Modern web browsers will now display the Punycode in the URL bar instead of the Unicode characters in an effort to tip users off.<br />
+    However, modern operating systems still display the Unicode characters in a domain name in a tooltip, which most security-conscious users will look at to observe if the URL they're about to click is legitimate.<br />
+    In this case, a user still has no realistic indication the domain they're about to go to isn't legitimate without performing additional investigation, which they'd have no real reason to do.<br />
+    In reality, a user won't realize something is wrong until AFTER the click, and even then only if they're paying close attention to their browser.<br />
+
+    <h2>What's the fix?</h2>
+    Unsure, but I'm not that smart.  My guess is that operating system UX elements displaying a URL should display the Punycode instead of the Unicode, or provide some visual indicator that the domain name contains a Unicode characer.<br />
+    In my opinion, this is still a problem.
+
     <h2>GitHub</h2>
-    I maintain a <a href="https://github.com/economycomfort/unisquat">Github repo</a> that contains this HTML and other pieces of information I've gathered on the topic of domain squatting with unicode (unisquatting!  You read it here first.)
+    I maintain a <a href="https://github.com/economycomfort/unisquat">Github repo</a> that contains this HTML and other pieces of information I've gathered on the topic of domain squatting with unicode (also called an <a href=")https://en.wikipedia.org/wiki/IDN_homograph_attack">IDN Homograph Attack</a>, but I think "unisquatting" sounds better.)
+    
     <h2>Hosting</h2>
-    This page is hosted via <a href="https://pages.cloudflare.com">Cloudflare Pages</a> fed by the GitHub repo above.<br/>
+    This page is hosted via <a href="https://pages.cloudflare.com">Cloudflare Pages</a> fed by the GitHub repo above.  From there, a domain with a unicode character is placed in front of it.<br/>
+   
+    <h2>Other Resources</h2>
+    This received some press in 2017 from a researcher named Xudong Zheng, who <a href="https://www.xudongz.com/blog/2017/idn-phishing/">published a rather comprehensive writeup on the subject</a>.<br />  
   </body>
 </html>
 
